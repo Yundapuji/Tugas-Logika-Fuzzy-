@@ -1,4 +1,6 @@
-judul="Pengecekkan Jumlah Produksi Kemasan Makanan ABC (Mamdani)".center(100,"*")
+print(" Yunda Puji Lestari_E1E120053 ".center(100,"*"))
+
+judul=" Pengecekkan Jumlah Produksi Kemasan Makanan ABC (Mamdani) ".center(100,"*")
 print(f"""\r\n{judul}\r\n""")
 
 pmt_b = 5000
@@ -43,10 +45,11 @@ elif y>=psd_k and y<=psd_b:
 else:
     miu_psd_banyak = 1
 
-print(miu_pmt_naik)
-print(miu_pmt_turun)
-print(miu_psd_sedikit)
-print(miu_psd_banyak)
+print("\nNilai Derajat Keanggotaan Permintaan Naik\t:",miu_pmt_naik)
+print("Nilai Derajat Keanggotaan Permintaan Turun\t:",miu_pmt_turun)
+print("Nilai Derajat Keanggotaan Persediaan Sedikit\t:",miu_psd_sedikit)
+print("Nilai Derajat Keanggotaan Persediaan Banyak\t:",miu_psd_banyak)
+print("")
 
 #Rule
 def r1():
@@ -70,9 +73,9 @@ linear_turun = max(r1(),r2())
 linear_naik = max(r3(),r4())
 
 if (linear_turun>linear_naik):
-    a1 = prd_max - (((prd_max - prd_min)* linear_turun)-prd_max)
-    a2 = prd_max - (((prd_max - prd_min) * linear_naik) - prd_max)
-    print("Adapun nilai a1 yang didapatkan adalah ",a1,"dan nilai a2 = ",a2)
+    a1 = round(prd_max - (((prd_max - prd_min)* linear_turun)-prd_max))
+    a2 = round(prd_max - (((prd_max - prd_min) * linear_naik) - prd_max))
+    print("a1\t= ",a1,"\na2\t= ",a2)
     print("***************************************")
     print(miu_pmt_naik,";\t\t\tz<=",a1)
     print("(",prd_max," - z )/",(prd_max-prd_min),";\t",a1,"<=","z<=",a2)
@@ -87,7 +90,7 @@ if (linear_turun>linear_naik):
         return mz
 
 elif (linear_turun==linear_naik):
-    a1 = prd_max-((prd_max-prd_min)*linear_turun)
+    a1 = round(prd_max-((prd_max-prd_min)*linear_turun))
     print("Adapun nilai a1 yang didapatkan adalah ",a1)
     print("***************************************")
     print(miu_pmt_turun,";\t\t\tz<=",prd_max)
@@ -96,9 +99,9 @@ elif (linear_turun==linear_naik):
         return mz
 
 else:
-    a1=((prd_max-prd_min)*linear_turun)+prd_min
-    a2 = ((prd_max - prd_min) * linear_naik) + prd_min
-    print("Adapun nilai a1 yang didapatkan adalah ",a1,"dan nilai a2 = ",a2)
+    a1 = round(((prd_max-prd_min)*linear_turun)+prd_min)
+    a2 = round(((prd_max - prd_min) * linear_naik) + prd_min)
+    print("a1\t= ",a1,"\na2\t= ",a2)
     print("***************************************")
     print(miu_pmt_turun,";\t\t\tz<=",a1)
     print("( z -",prd_min,")/",(prd_max-prd_min),";\t",a1,"<=","z<=",a2)
